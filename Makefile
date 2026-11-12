@@ -3,7 +3,7 @@ CFLAGS = -std=c99 -Wall -Wextra -g
 
 all: banker
 
-banker: banker.c banker.h
+banker: banker.c
 	$(CC) $(CFLAGS) -o banker banker.c
 
 clean:
