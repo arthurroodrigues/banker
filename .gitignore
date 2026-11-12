@@ -53,3 +53,8 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+
+#IMPLEMENTAÇÃO 5
+customer.txt
+commands.txt
