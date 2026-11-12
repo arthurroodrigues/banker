@@ -81,3 +81,23 @@ Try: sudo apt install <deb name>
 [?2004lexit
 
 Script done on 2026-11-12 17:22:15-03:00 [COMMAND_EXIT_CODE="127"]
+Script started on 2026-11-12 17:25:35-03:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="150" LINES="13"]
+[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [7mmake[27m
+[7m./banker 10 5 7[27m
+[7m./banker[27m
+[7m./banker 10 x 7[27m
+[7m./banker 10 -5[27m[A[A[A[A]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ make
+./banker 10 5 7
+./banker
+./banker 10 x 7
+./banker 10 -5
+[?2004lgcc -std=c99 -Wall -Wextra -g -o banker banker.c
+recursos: 3
+10 5 7 
+Erro: informe as instancias de cada recurso. Exemplo: ./banker 10 5 7
+Erro: argumento invalido 'x'. Use inteiros nao negativos.
+Erro: argumento invalido '-5'. Use inteiros nao negativos.
+[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-12 17:26:33-03:00 [COMMAND_EXIT_CODE="1"]
