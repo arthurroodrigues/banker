@@ -2,7 +2,9 @@
 #include <stdlib.h>
 
 int num_recursos = 0;
+int num_clientes = 0;
 int *disponivel = NULL;
+
 
 int converter_inteiro(char *texto, int *valor){
     
@@ -38,16 +40,49 @@ int ler_argumentos(int argc, char *argv[]){
     }
     return 1;
 }
+int linha_vazia(const char *linha)
+{
+    while (*linha) {
+        if (*linha != ' ' && *linha != '\n' && *linha != '\r')
+            return 0;
+        linha++;
+    }
+    return 1;
+}
 
-int main(int argc, char *argv[]){
+int carregar_clientes(const char *caminho){
     
+    char linha[1000];
+    FILE *arquivo = fopen(caminho, "r");
+
+    if (arquivo == NULL) {
+        fprintf(stderr, "Erro: nao foi possivel abrir %s\n", caminho);
+        return 0;
+    }
+
+    while (fgets(linha, sizeof(linha), arquivo))
+        if (!linha_vazia(linha))
+            num_clientes++;
+
+    fclose(arquivo);
+
+    if (num_clientes == 0) {
+        fprintf(stderr, "Erro: %s nao possui clientes\n", caminho);
+        return 0;
+    }
+    return 1;
+}
+
+int main(int argc, char *argv[])
+{
     if (!ler_argumentos(argc, argv))
         return 1;
+    if (!carregar_clientes("customer.txt")) {
+        free(disponivel);
+        return 1;
+    }
 
-    printf("recursos: %d\n", num_recursos);
-    for (int i = 0; i < num_recursos; i++)
-        printf("%d ", disponivel[i]);
-    printf("\n");
+    printf("recursos: %d, clientes: %d\n", num_recursos, num_clientes);
 
     free(disponivel);
     return 0;
