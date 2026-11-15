@@ -196,6 +196,45 @@ int processar_comandos(const char *caminho){
     return 1;
 }
 
+int estado_seguro(void){
+    int trabalho[num_recursos];
+    int terminado[num_clientes];
+
+    for (int j = 0; j < num_recursos; j++)
+        trabalho[j] = disponivel[j];
+    for (int i = 0; i < num_clientes; i++)
+        terminado[i] = 0;
+
+    int encontrou = 1;
+    while (encontrou) {
+        encontrou = 0;
+        for (int i = 0; i < num_clientes; i++) {
+            if (terminado[i])
+                continue;
+
+            int pode_terminar = 1;
+            for (int j = 0; j < num_recursos; j++) {
+                if (necessidade[i][j] > trabalho[j]) {
+                    pode_terminar = 0;
+                    break;
+                }
+            }
+
+            if (pode_terminar) {
+                for (int j = 0; j < num_recursos; j++)
+                    trabalho[j] += alocado[i][j];
+                terminado[i] = 1;
+                encontrou = 1;
+            }
+        }
+    }
+
+    for (int i = 0; i < num_clientes; i++)
+        if (!terminado[i])
+            return 0;
+    return 1;
+}
+
 int main(int argc, char *argv[])
 {
     if (!ler_argumentos(argc, argv))
@@ -204,6 +243,7 @@ int main(int argc, char *argv[])
         free(disponivel);
         return 1;
     }
+    printf("estado seguro: %d\n", estado_seguro());
     if (!processar_comandos("commands.txt")) {
         free(disponivel);
         return 1;
