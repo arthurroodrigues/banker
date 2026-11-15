@@ -126,6 +126,76 @@ int carregar_clientes(const char *caminho)
     return 1;
 }
 
+int interpretar_comando(char *linha, int numero_linha, const char *caminho)
+{
+    char *comando = strtok(linha, " \t\r\n");
+
+    if (strcmp(comando, "*") == 0) {
+        if (strtok(NULL, " \t\r\n") != NULL) {
+            fprintf(stderr, "Erro: %s, linha %d: o comando * nao recebe parametros\n", caminho, numero_linha);
+            return 0;
+        }
+        printf("comando *\n");
+        return 1;
+    }
+
+    if (strcmp(comando, "RQ") != 0 && strcmp(comando, "RL") != 0) {
+        fprintf(stderr, "Erro: %s, linha %d: comando '%s' invalido\n", caminho, numero_linha, comando);
+        return 0;
+    }
+
+    int cliente;
+    char *token = strtok(NULL, " \t\r\n");
+    if (token == NULL || !converter_inteiro(token, &cliente) || cliente >= num_clientes) {
+        fprintf(stderr, "Erro: %s, linha %d: numero de cliente invalido\n", caminho, numero_linha);
+        return 0;
+    }
+
+    int valores[num_recursos];
+    for (int j = 0; j < num_recursos; j++) {
+        token = strtok(NULL, " \t\r\n");
+        if (token == NULL || !converter_inteiro(token, &valores[j])) {
+            fprintf(stderr, "Erro: %s, linha %d: esperado %d valores inteiros\n", caminho, numero_linha, num_recursos);
+            return 0;
+        }
+    }
+
+    if (strtok(NULL, " \t\r\n") != NULL) {
+        fprintf(stderr, "Erro: %s, linha %d: valores demais, esperado %d\n", caminho, numero_linha, num_recursos);
+        return 0;
+    }
+
+    printf("%s cliente %d:", comando, cliente);
+    for (int j = 0; j < num_recursos; j++)
+        printf(" %d", valores[j]);
+    printf("\n");
+    return 1;
+}
+
+int processar_comandos(const char *caminho){
+    char linha[1024];
+    int numero_linha = 0;
+    FILE *arquivo = fopen(caminho, "r");
+
+    if (arquivo == NULL) {
+        fprintf(stderr, "Erro: nao foi possivel abrir %s\n", caminho);
+        return 0;
+    }
+
+    while (fgets(linha, sizeof(linha), arquivo)) {
+        numero_linha++;
+        if (linha_vazia(linha))
+            continue;
+        if (!interpretar_comando(linha, numero_linha, caminho)) {
+            fclose(arquivo);
+            return 0;
+        }
+    }
+
+    fclose(arquivo);
+    return 1;
+}
+
 int main(int argc, char *argv[])
 {
     if (!ler_argumentos(argc, argv))
@@ -134,12 +204,9 @@ int main(int argc, char *argv[])
         free(disponivel);
         return 1;
     }
-
-    printf("recursos: %d, clientes: %d\n", num_recursos, num_clientes);
-    for (int i = 0; i < num_clientes; i++) {
-        for (int j = 0; j < num_recursos; j++)
-            printf("%d ", maximo[i][j]);
-        printf("\n");
+    if (!processar_comandos("commands.txt")) {
+        free(disponivel);
+        return 1;
     }
 
     free(disponivel);
