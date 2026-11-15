@@ -101,3 +101,82 @@ Erro: argumento invalido '-5'. Use inteiros nao negativos.
 [?2004lexit
 
 Script done on 2026-11-12 17:26:33-03:00 [COMMAND_EXIT_CODE="1"]
+Script started on 2026-11-15 14:31:43-03:00 [TERM="xterm-256color" TTY="/dev/pts/6" COLUMNS="150" LINES="14"]
+[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [7mmake[27m
+[7m./banker 10 5 7[27m
+[7m./banker 10 5[27m
+[7m./banker 10 5 7 8[27m
+[7mcp customer.txt customer.bak[27m
+[7mecho "1,x,3" >> customer.txt[27m
+[7m./banker 10 5 7[27m
+[7mmv customer.bak customer.txt[27m[A[A[A[A[A[A[A]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ make
+./banker 10 5 7
+./banker 10 5
+./banker 10 5 7 8
+cp customer.txt customer.bak
+echo "1,x,3" >> customer.txt
+./banker 10 5 7
+mv customer.bak customer.txt
+[?2004lgcc -std=c99 -Wall -Wextra -g -o banker banker.c
+recursos: 3, clientes: 5
+7 5 3 
+3 2 2 
+9 0 2 
+2 2 2 
+4 3 3 
+Erro: formato invalido em customer.txt, cliente 0 (esperado 2 colunas de inteiros)
+Erro: customer.txt, cliente 0 tem 3 colunas, esperado 4
+Erro: formato invalido em customer.txt, cliente 4 (esperado 3 colunas de inteiros)
+[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [7mmake[27m
+[7m./banker 10 5 7[27m
+[7m./banker 10 5[27m
+[7m./banker 10 5 7 8[27m
+[7mcp customer.txt customer.bak[27m
+[7mecho "1,x,3" >> customer.txt[27m
+[7m./banker 10 5 7[27m
+[7mmv customer.bak customer.txt[27m[A[A[A[A[A[A[A]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ make
+./banker 10 5 7
+./banker 10 5
+./banker 10 5 7 8
+cp customer.txt customer.bak
+echo "1,x,3" >> customer.txt
+./banker 10 5 7
+[1Pmv customer.bak customer.tx[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[A[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[C[C[C[C[C[K[A[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[A[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[K[A[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[A]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7mcat -A customer.txt[27mcat -A customer.txt
+[?2004l7,5,3$
+3,2,2$
+9,0,2$
+2,2,2$
+4,3,3[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [7mcp customer.txt customer.bak[27m
+[7mprintf "\n1,x,3\n" >> customer.txt[27m
+[7m./banker 10 5 7[27m
+[7mmv customer.bak customer.txt[27m
+[7mcp customer.txt customer.bak[27m
+[7mprintf "\n1,2\n" >> customer.txt[27m
+[7m./banker 10 5 7[27m
+[7mmv customer.bak customer.txt[27m
+[7mcat customer.txt[27m[A[A[A[A[A[A[A[A]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ cp customer.txt customer.bak
+printf "\n1,x,3\n" >> customer.txt
+./banker 10 5 7
+mv customer.bak customer.txt
+cp customer.txt customer.bak
+printf "\n1,2\n" >> customer.txt
+./banker 10 5 7
+mv customer.bak customer.txt
+cat customer.txt
+[?2004lErro: formato invalido em customer.txt, cliente 5 (esperado 3 colunas de inteiros)
+Erro: customer.txt, cliente 5 tem 2 colunas, esperado 3
+7,5,3
+3,2,2
+9,0,2
+2,2,2
+4,3,3[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-15 14:33:38-03:00 [COMMAND_EXIT_CODE="0"]
