@@ -337,4 +337,101 @@ The customer 2 request 0 1 0 was denied because exceed its maximum allocation
 14c14
 < The resources 3 3 2 are not enough to customer 4 request 4 0 0
 ---
-> The resources 3 3 2 are not enough to customer 4 request 4 0 
+> The resources 3 3 2 are not enough to customer 4 request 4 0 0 
+Erro: formato invalido em customer.txt, cliente 0 (esperado 2 colunas de inteiros)
+Erro: customer.txt, cliente 0 tem 3 colunas, esperado 4
+[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [7mmake[27m
+[7m./banker 10 5 7[27m
+[7mdiff result.txt esperado.txt[27m[A[A]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ make
+./banker 10 5 7
+diff result.txt esperado.txt
+[?2004lgcc -std=c99 -Wall -Wextra -g -o banker banker.c
+[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [7mmv commands.txt commands.bak[27m
+[7m./banker 10 5 7[27m
+[7mmv commands.bak commands.txt[27m
+[7mmv customer.txt customer.bak[27m
+[7m./banker 10 5 7[27m
+[7mmv customer.bak customer.txt[27m
+[7m./banker[27m
+[7m./banker 10 5 x[27m
+[7mcp commands.txt commands.bak[27m
+[7mprintf "RQ 1 0 0 0\nRQ 1 3 2 2\nRQ 1 0 0 1\n" > commands.txt[27m
+[7m./banker 10 5 7[27m
+[7mcat result.txt[27m
+[7mmv commands.bak commands.txt[27m[A[A[A[A[A[A[A[A[A[A[A[A]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ mv commands.txt commands.bak
+./banker 10 5 7
+mv commands.bak commands.txt
+mv customer.txt customer.bak
+./banker 10 5 7
+mv customer.bak customer.txt
+./banker
+./banker 10 5 x
+cp commands.txt commands.bak
+printf "RQ 1 0 0 0\nRQ 1 3 2 2\nRQ 1 0 0 1\n" > commands.txt
+./banker 10 5 7
+cat result.txt
+mv commands.bak commands.txt
+[?2004lErro: nao foi possivel abrir commands.txt
+Erro: nao foi possivel abrir customer.txt
+Erro: informe as instancias de cada recurso. Exemplo: ./banker 10 5 7
+Erro: argumento invalido 'x'. Use inteiros nao negativos.
+Allocate to customer 1 the resources 0 0 0
+Allocate to customer 1 the resources 3 2 2
+The customer 1 request 0 0 1 was denied because exceed its maximum allocation
+[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [K]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [7mclear[27m
+[7mdate; whoami; pwd[27m
+[7mmake clean && make[27m
+[7m./banker 10 5 7[27m
+[7mecho "--- result.txt ---"[27m
+[7mcat result.txt[27m
+[7mecho "--- diff com o esperado ---"[27m
+[7mdiff result.txt esperado.txt && echo "IDENTICO"[27m[A[A[A[A[A[A[A]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ clear
+date; whoami; pwd
+make clean && make
+./banker 10 5 7
+echo "--- result.txt ---"
+cat result.txt
+echo "--- diff com o esperado ---"
+diff result.txt esperado.txt && echo "IDENTICO"
+[?2004l[H[2J[3JMon Nov 16 11:50:27 -03 2026
+arthur
+/mnt/c/Users/User/Desktop/ara
+rm -f banker result.txt
+gcc -std=c99 -Wall -Wextra -g -o banker banker.c
+--- result.txt ---
+Allocate to customer 0 the resources 0 2 1
+Allocate to customer 2 the resources 3 0 2
+Allocate to customer 1 the resources 2 0 0
+Allocate to customer 4 the resources 0 0 2
+Release from customer 0 the resources 0 1 1
+Allocate to customer 3 the resources 2 1 1
+MAXIMUM   |   ALLOCATION  |   NEED
+7 5 3     |   0 1 0       |   7 4 3 
+3 2 2     |   2 0 0       |   1 2 2 
+9 0 2     |   3 0 2       |   6 0 0 
+2 2 2     |   2 1 1       |   0 1 1 
+4 3 3     |   0 0 2       |   4 3 1 
+AVAILABLE 3 3 2 
+The resources 3 3 2 are not enough to customer 4 request 4 0 0 
+Allocate to customer 1 the resources 1 0 2
+The customer 0 request 0 2 0 was denied because result in an unsafe state
+The customer 2 request 0 1 0 was denied because exceed its maximum allocation
+--- diff com o esperado ---
+IDENTICO
+[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [7mclear[27m
+[7mecho "--- casos invalidos ---"[27m
+[7m./banker[27m
+[7m./banker 10 5 x[27m
+[7m./banker 10 5[27m[A[A[A[A]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ clear
+echo "--- casos invalidos ---"
+./banker
+./banker 10 5 x
+./banker 10 5
+[?2004l[H[2J[3J--- casos invalidos ---
+Erro: informe as instancias de cada recurso. Exemplo: ./banker 10 5 7
+Erro: argumento invalido 'x'. Use inteiros nao negativos.
+Erro: formato invalido em customer.txt, cliente 0 (esperado 2 colunas de inteiros)
+[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-16 11:51:16-03:00 [COMMAND_EXIT_CODE="1"]
