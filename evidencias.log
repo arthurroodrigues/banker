@@ -435,3 +435,45 @@ Erro: formato invalido em customer.txt, cliente 0 (esperado 2 colunas de inteiro
 [?2004lexit
 
 Script done on 2026-11-16 11:51:16-03:00 [COMMAND_EXIT_CODE="1"]
+Script started on 2026-11-16 16:59:42-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="150" LINES="8"]
+[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [H[2J]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ make clean && make
+./banker 10 5 7
+diff result.txt esperado.txt && echo IDENTICO
+cp commands.txt commands.bak
+printf "RQ 0 1 0 0\n\t\nRQ 1 1 0 0\n" > commands.txt
+./banker 10 5 7
+cat result.txt
+printf "RQ 99999999999 0 0 0\n" > commands.txt
+./banker 10 5 7
+printf "RQ 0 4294967296 0 0\n" > commands.txt
+[7m./banker 10 5 7[27m
+[7mmv commands.bak commands.txt[27m
+[7m./banker 99999999999 5 7[27m
+[7m./banker 2147483648 5 7[27m
+[7m./banker 2147483647 5 7[27m
+[7m./banker[27m
+[7m./banker 10 5 x[27m
+[7m./banker 10 5[27m[A[A[A[A[A[A[A./banker 10 5 7
+mv commands.bak commands.txt
+./banker 99999999999 5 7
+./banker 2147483648 5 7
+./banker 2147483647 5 7
+./banker
+./banker 10 5 x
+./banker 10 5
+[?2004lrm -f banker result.txt
+gcc -std=c99 -Wall -Wextra -g -o banker banker.c
+IDENTICO
+Allocate to customer 0 the resources 1 0 0
+Allocate to customer 1 the resources 1 0 0
+Erro: commands.txt, linha 1: numero de cliente invalido
+Erro: commands.txt, linha 1: esperado 3 valores inteiros
+Erro: argumento invalido '99999999999'. Use inteiros nao negativos.
+Erro: argumento invalido '2147483648'. Use inteiros nao negativos.
+Erro: informe as instancias de cada recurso. Exemplo: ./banker 10 5 7
+Erro: argumento invalido 'x'. Use inteiros nao negativos.
+Erro: formato invalido em customer.txt, cliente 0 (esperado 2 colunas de inteiros)
+[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-16 17:03:48-03:00 [COMMAND_EXIT_CODE="1"]

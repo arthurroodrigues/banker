@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
 
 void requisicao(int cliente, int *pedido);
 void liberacao(int cliente, int *pedido);
@@ -20,9 +21,9 @@ int converter_inteiro(char *texto, int *valor){
 
     if (fim == texto)
         return 0;
-    while (*fim == ' ' || *fim == '\n' || *fim == '\r')
+    while (*fim == ' ' || *fim == '\t' || *fim == '\n' || *fim == '\r')
         fim++;
-    if (*fim != '\0' || numero < 0)
+    if (*fim != '\0' || numero < 0 || numero > INT_MAX)
         return 0;
     *valor = (int)numero;
     return 1;
@@ -49,7 +50,7 @@ int ler_argumentos(int argc, char *argv[]){
 }
 int linha_vazia(const char *linha){
     while (*linha) {
-        if (*linha != ' ' && *linha != '\n' && *linha != '\r')
+        if (*linha != ' ' && *linha != '\t' && *linha != '\n' && *linha != '\r')
             return 0;
         linha++;
     }
@@ -147,6 +148,9 @@ int interpretar_comando(char *linha, int numero_linha, const char *caminho){
 
     int cliente;
     char *token = strtok(NULL, " \t\r\n");
+    if (comando == NULL)
+        return 1;
+        
     if (token == NULL || !converter_inteiro(token, &cliente) || cliente >= num_clientes) {
         fprintf(stderr, "Erro: %s, linha %d: numero de cliente invalido\n", caminho, numero_linha);
         return 0;
