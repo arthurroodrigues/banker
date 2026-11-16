@@ -4,6 +4,7 @@
 
 void requisicao(int cliente, int *pedido);
 void liberacao(int cliente, int *pedido);
+void imprimir_estado(void);
 
 int num_recursos = 0;
 int num_clientes = 0;
@@ -46,8 +47,7 @@ int ler_argumentos(int argc, char *argv[]){
     }
     return 1;
 }
-int linha_vazia(const char *linha)
-{
+int linha_vazia(const char *linha){
     while (*linha) {
         if (*linha != ' ' && *linha != '\n' && *linha != '\r')
             return 0;
@@ -65,8 +65,7 @@ int **alocar_matriz(int linhas, int colunas){
 
 }
 
-int carregar_clientes(const char *caminho)
-{
+int carregar_clientes(const char *caminho){
     char linha[1000];
     FILE *arquivo = fopen(caminho, "r");
 
@@ -129,8 +128,7 @@ int carregar_clientes(const char *caminho)
     return 1;
 }
 
-int interpretar_comando(char *linha, int numero_linha, const char *caminho)
-{
+int interpretar_comando(char *linha, int numero_linha, const char *caminho){
     char *comando = strtok(linha, " \t\r\n");
 
     if (strcmp(comando, "*") == 0) {
@@ -138,7 +136,7 @@ int interpretar_comando(char *linha, int numero_linha, const char *caminho)
             fprintf(stderr, "Erro: %s, linha %d: o comando * nao recebe parametros\n", caminho, numero_linha);
             return 0;
         }
-        printf("comando *\n");
+        imprimir_estado();
         return 1;
     }
 
@@ -313,9 +311,33 @@ void liberacao(int cliente, int *pedido){
     imprimir_vetor(pedido);
     printf("\n");
 }
+void formatar_vetor(char *destino, int *vetor){
+    destino[0] = '\0';
+    for (int j = 0; j < num_recursos; j++) {
+        char numero[16];
+        snprintf(numero, sizeof(numero), j > 0 ? " %d" : "%d", vetor[j]);
+        strcat(destino, numero);
+    }
+}
 
-int main(int argc, char *argv[])
-{
+void imprimir_estado(void){
+    char texto_maximo[4000];
+    char texto_alocado[4000];
+    char texto_necessidade[4000];
+
+    printf("MAXIMUM   |   ALLOCATION  |   NEED\n");
+    for (int i = 0; i < num_clientes; i++) {
+        formatar_vetor(texto_maximo, maximo[i]);
+        formatar_vetor(texto_alocado, alocado[i]);
+        formatar_vetor(texto_necessidade, necessidade[i]);
+        printf("%-10s|   %-12s|   %s \n", texto_maximo, texto_alocado, texto_necessidade);
+    }
+    printf("AVAILABLE ");
+    imprimir_vetor(disponivel);
+    printf(" \n");
+}
+
+int main(int argc, char *argv[]){
     if (!ler_argumentos(argc, argv))
         return 1;
     if (!carregar_clientes("customer.txt")) {
