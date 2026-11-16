@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+void requisicao(int cliente, int *pedido);
+
 int num_recursos = 0;
 int num_clientes = 0;
 int *disponivel = NULL;
@@ -165,7 +167,12 @@ int interpretar_comando(char *linha, int numero_linha, const char *caminho)
         return 0;
     }
 
-    printf("%s cliente %d:", comando, cliente);
+    if (strcmp(comando, "RQ") == 0) {
+        requisicao(cliente, valores);
+        return 1;
+    }
+
+    printf("RL cliente %d:", cliente);
     for (int j = 0; j < num_recursos; j++)
         printf(" %d", valores[j]);
     printf("\n");
@@ -235,6 +242,59 @@ int estado_seguro(void){
     return 1;
 }
 
+void imprimir_vetor(int *vetor)
+{
+    for (int j = 0; j < num_recursos; j++) {
+        if (j > 0)
+            printf(" ");
+        printf("%d", vetor[j]);
+    }
+}
+
+void requisicao(int cliente, int *pedido){
+    for (int j = 0; j < num_recursos; j++) {
+        if (pedido[j] > necessidade[cliente][j]) {
+            printf("The customer %d request ", cliente);
+            imprimir_vetor(pedido);
+            printf(" was denied because exceed its maximum allocation\n");
+            return;
+        }
+    }
+
+    for (int j = 0; j < num_recursos; j++) {
+        if (pedido[j] > disponivel[j]) {
+            printf("The resources ");
+            imprimir_vetor(disponivel);
+            printf(" are not enough to customer %d request ", cliente);
+            imprimir_vetor(pedido);
+            printf("\n");
+            return;
+        }
+    }
+
+    for (int j = 0; j < num_recursos; j++) {
+        disponivel[j] -= pedido[j];
+        alocado[cliente][j] += pedido[j];
+        necessidade[cliente][j] -= pedido[j];
+    }
+
+    if (!estado_seguro()) {
+        for (int j = 0; j < num_recursos; j++) {
+            disponivel[j] += pedido[j];
+            alocado[cliente][j] -= pedido[j];
+            necessidade[cliente][j] += pedido[j];
+        }
+        printf("The customer %d request ", cliente);
+        imprimir_vetor(pedido);
+        printf(" was denied because result in an unsafe state\n");
+        return;
+    }
+
+    printf("Allocate to customer %d the resources ", cliente);
+    imprimir_vetor(pedido);
+    printf("\n");
+}
+
 int main(int argc, char *argv[])
 {
     if (!ler_argumentos(argc, argv))
@@ -243,7 +303,6 @@ int main(int argc, char *argv[])
         free(disponivel);
         return 1;
     }
-    printf("estado seguro: %d\n", estado_seguro());
     if (!processar_comandos("commands.txt")) {
         free(disponivel);
         return 1;

@@ -180,3 +180,65 @@ Erro: customer.txt, cliente 5 tem 2 colunas, esperado 3
 [?2004lexit
 
 Script done on 2026-11-15 14:33:38-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-11-15 15:00:36-03:00 [TERM="xterm-256color" TTY="/dev/pts/6" COLUMNS="150" LINES="14"]
+[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [7mmake[27m
+[7m./banker 10 5 7[27m
+[7mcp commands.txt commands.bak[27m
+[7mprintf "RQ 9 1 1 1\n" > commands.txt[27m
+[7m./banker 10 5 7[27m
+[7mprintf "RQ 0 1 1\n" > commands.txt[27m
+[7m./banker 10 5 7[27m
+[7mprintf "XX 0 1 1 1\n" > commands.txt[27m
+[7m./banker 10 5 7[27m
+[7mprintf "RQ 0 1 1 1 1\n" > commands.txt[27m
+[7m./banker 10 5 7[27m
+[7mmv commands.bak commands.txt[27m
+[7mcat commands.txt[27m[A[A[A[A[A[A[A[A[A[A[A[A]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ make
+./banker 10 5 7
+cp commands.txt commands.bak
+printf "RQ 9 1 1 1\n" > commands.txt
+./banker 10 5 7
+printf "RQ 0 1 1\n" > commands.txt
+./banker 10 5 7
+printf "XX 0 1 1 1\n" > commands.txt
+./banker 10 5 7
+printf "RQ 0 1 1 1 1\n" > commands.txt
+./banker 10 5 7
+mv commands.bak commands.txt
+cat commands.txt
+[?2004lgcc -std=c99 -Wall -Wextra -g -o banker banker.c
+RQ cliente 0: 0 2 1
+RQ cliente 2: 3 0 2
+RQ cliente 1: 2 0 0
+RQ cliente 4: 0 0 2
+RL cliente 0: 0 1 1
+RQ cliente 3: 2 1 1
+comando *
+RQ cliente 4: 4 0 0
+RQ cliente 1: 1 0 2
+RQ cliente 0: 0 2 0
+RQ cliente 2: 0 1 0
+Erro: commands.txt, linha 1: numero de cliente invalido
+Erro: commands.txt, linha 1: esperado 3 valores inteiros
+Erro: commands.txt, linha 1: comando 'XX' invalido
+Erro: commands.txt, linha 1: valores demais, esperado 3
+RQ 0 0 2 1
+RQ 2 3 0 2
+RQ 1 2 0 0
+RQ 4 0 0 2
+RL 0 0 1 1
+RQ 3 2 1 1
+*
+RQ 4 4 0 0
+RQ 1 1 0 2
+RQ 0 0 2 0
+RQ 2 0 1 0[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [7mmake[27m
+[7m./banker 10 5 7 | head -1[27m
+[7m./banker 6 5 3 | head -1[27m[A[A]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ make
+./banker 10 5 7 | head -1
+./banker 6 5 3 | head -1
+[?2004lgcc -std=c99 -Wall -Wextra -g -o banker banker.c
+estado seguro: 1
+estado seguro: 0
+[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ 
+Script done on 2026-11-15 15:50:54-03:00 [COMMAND_EXIT_CODE="0"]
