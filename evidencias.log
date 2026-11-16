@@ -242,3 +242,32 @@ estado seguro: 1
 estado seguro: 0
 [?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ 
 Script done on 2026-11-15 15:50:54-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-11-16 11:34:58-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="150" LINES="14"]
+[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ [7mmake[27m
+[7m./banker 10 5 7[27m
+[7mcp commands.txt commands.bak[27m
+[7mprintf "RL 0 1 0 0\n" > commands.txt[27m
+[7m./banker 10 5 7[27m
+[7mmv commands.bak commands.txt[27m[A[A[A[A[A]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ make
+./banker 10 5 7
+cp commands.txt commands.bak
+printf "RL 0 1 0 0\n" > commands.txt
+./banker 10 5 7
+mv commands.bak commands.txt
+[?2004lmake: Nothing to be done for 'all'.
+Allocate to customer 0 the resources 0 2 1
+Allocate to customer 2 the resources 3 0 2
+Allocate to customer 1 the resources 2 0 0
+Allocate to customer 4 the resources 0 0 2
+Release from customer 0 the resources 0 1 1
+Allocate to customer 3 the resources 2 1 1
+comando *
+The resources 3 3 2 are not enough to customer 4 request 4 0 0
+Allocate to customer 1 the resources 1 0 2
+The customer 0 request 0 2 0 was denied because result in an unsafe state
+The customer 2 request 0 1 0 was denied because exceed its maximum allocation
+The customer 0 release 1 0 0 was denied because exceed its allocation
+[?2004h]0;arthur@DESKTOP-0VQHRHI: /mnt/c/Users/User/Desktop/ara[01;32marthur@DESKTOP-0VQHRHI[00m:[01;34m/mnt/c/Users/User/Desktop/ara[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-16 11:35:14-03:00 [COMMAND_EXIT_CODE="0"]

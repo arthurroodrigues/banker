@@ -3,6 +3,7 @@
 #include <string.h>
 
 void requisicao(int cliente, int *pedido);
+void liberacao(int cliente, int *pedido);
 
 int num_recursos = 0;
 int num_clientes = 0;
@@ -172,10 +173,7 @@ int interpretar_comando(char *linha, int numero_linha, const char *caminho)
         return 1;
     }
 
-    printf("RL cliente %d:", cliente);
-    for (int j = 0; j < num_recursos; j++)
-        printf(" %d", valores[j]);
-    printf("\n");
+    liberacao(cliente, valores);
     return 1;
 }
 
@@ -291,6 +289,27 @@ void requisicao(int cliente, int *pedido){
     }
 
     printf("Allocate to customer %d the resources ", cliente);
+    imprimir_vetor(pedido);
+    printf("\n");
+}
+
+void liberacao(int cliente, int *pedido){
+    for (int j = 0; j < num_recursos; j++) {
+        if (pedido[j] > alocado[cliente][j]) {
+            printf("The customer %d release ", cliente);
+            imprimir_vetor(pedido);
+            printf(" was denied because exceed its allocation\n");
+            return;
+        }
+    }
+
+    for (int j = 0; j < num_recursos; j++) {
+        disponivel[j] += pedido[j];
+        alocado[cliente][j] -= pedido[j];
+        necessidade[cliente][j] += pedido[j];
+    }
+
+    printf("Release from customer %d the resources ", cliente);
     imprimir_vetor(pedido);
     printf("\n");
 }
