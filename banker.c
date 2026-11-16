@@ -185,6 +185,12 @@ int processar_comandos(const char *caminho){
         return 0;
     }
 
+    if (freopen("result.txt", "w", stdout) == NULL) {
+    fprintf(stderr, "Erro: nao foi possivel criar result.txt\n");
+    fclose(arquivo);
+    return 0;
+    }
+
     while (fgets(linha, sizeof(linha), arquivo)) {
         numero_linha++;
         if (linha_vazia(linha))
@@ -263,7 +269,7 @@ void requisicao(int cliente, int *pedido){
             imprimir_vetor(disponivel);
             printf(" are not enough to customer %d request ", cliente);
             imprimir_vetor(pedido);
-            printf("\n");
+            printf(" \n");
             return;
         }
     }
