@@ -4,8 +4,8 @@
 #include <limits.h>
 
 void requisicao(int cliente, int *pedido);
-void liberacao(int cliente, int *pedido);
 void imprimir_estado(void);
+int liberacao(int cliente, int *pedido);
 
 int num_recursos = 0;
 int num_clientes = 0;
@@ -175,12 +175,16 @@ int interpretar_comando(char *linha, int numero_linha, const char *caminho){
         return 1;
     }
 
-    liberacao(cliente, valores);
+    if (!liberacao(cliente, valores)) {
+        fprintf(stderr, "Erro: %s, linha %d: cliente %d tentou liberar mais do que tem alocado\n",  
+            caminho, numero_linha, cliente);
+        return 0;
+    }
     return 1;
 }
 
 int processar_comandos(const char *caminho){
-    char linha[1024];
+    char linha[1000];
     int numero_linha = 0;
     FILE *arquivo = fopen(caminho, "r");
 
@@ -301,15 +305,10 @@ void requisicao(int cliente, int *pedido){
     printf("\n");
 }
 
-void liberacao(int cliente, int *pedido){
-    for (int j = 0; j < num_recursos; j++) {
-        if (pedido[j] > alocado[cliente][j]) {
-            printf("The customer %d release ", cliente);
-            imprimir_vetor(pedido);
-            printf(" was denied because exceed its allocation\n");
-            return;
-        }
-    }
+int liberacao(int cliente, int *pedido){
+    for (int j = 0; j < num_recursos; j++)
+        if (pedido[j] > alocado[cliente][j])
+            return 0;
 
     for (int j = 0; j < num_recursos; j++) {
         disponivel[j] += pedido[j];
@@ -320,7 +319,9 @@ void liberacao(int cliente, int *pedido){
     printf("Release from customer %d the resources ", cliente);
     imprimir_vetor(pedido);
     printf("\n");
+    return 1;
 }
+
 void formatar_vetor(char *destino, int *vetor){
     destino[0] = '\0';
     for (int j = 0; j < num_recursos; j++) {
